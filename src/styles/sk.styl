@@ -1,0 +1,100 @@
+
+// Config
+
+small_padding = 10px
+color_primary = #3498db
+color_background = #2c3e50
+border_size = 3px
+border_radius = 0
+
+// Reset
+
+body
+  box-sizing border-box
+  padding 0
+  margin 0
+  color #222
+
+*, *:before, *:after
+  box-sizing inherit
+
+p
+  padding 0
+  margin 0
+
+// General
+
+.small
+  font-size .8em
+  color #aaa
+
+.right
+  float right
+
+a
+  color color_primary
+  text-decoration none
+  &:hover
+    color darken(color_primary, 10)
+    border-bottom 1px solid darken(color_primary, 10)
+
+button
+  margin 0
+  padding small_padding
+  background color_primary
+  color white
+  border none
+  font-size .8em
+  border-radius border_radius
+  outline none
+  cursor pointer
+  border border_size solid darken(color_primary, 10)
+  &:hover, &.selected
+    background darken(color_primary, 10)
+
+input[type="text"]
+  font-size .8em
+  border border_size solid #ccc
+  padding small_padding
+  margin 0
+  outline none
+  border-radius border_radius
+  &:focus
+    border border_size solid darken(color_primary, 10)
+
+nav
+  padding small_padding
+  background color_background
+  button
+    margin-right small_padding
+    &:last-child
+      margin-right 0
+
+// Directives
+
+.sk-textinput
+  display block
+  width 100%
+  input[type="text"]
+    width 70%
+    border-radius border_radius 0 0 border_radius
+    border-right none
+    border-left border_size solid darken(color_primary, 10)
+    border-bottom border_size solid darken(color_primary, 10)
+    border-top border_size solid darken(color_primary, 10)
+  button
+    width 30%
+    border-radius 0 border_radius border_radius 0
+
+.sk-view
+  padding small_padding
+
+.sk-checklist
+  padding small_padding 0
+
+.sk-checkitem
+  padding small_padding
+  color #444
+  cursor pointer
+  &.current
+    background #eee

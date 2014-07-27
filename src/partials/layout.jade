@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title GitButler
+    link(rel="stylesheet", href="index.css")
+  body(ng-app="gitbutler")
+    #app(ng-controller="AppCtrl as app")
+      block app
+    script(src="bower_components/angular/angular.js")
+    script(src="bower_components/jwerty/jwerty.js")
+    script(src="scripts/index.js")

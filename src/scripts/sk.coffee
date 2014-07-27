@@ -1,0 +1,125 @@
+
+module.exports = (ngModule) ->
+
+  #
+  # Views
+  #
+
+  ngModule.directive "skViews", ->
+    restrict: "E"
+    transclude: true
+    template: """
+    <nav>
+      <button
+        ng-repeat="view in views"
+        ng-click="select(view)"
+        ng-class="{selected: view.selected}">
+          {{view.name}}
+      </button>
+    </nav>
+    <div class="sk-container" ng-transclude></div>
+    """
+    controller: class
+
+      @$inject = ["$scope"]
+
+      constructor: (@scope) ->
+        @scope.views = []
+        @scope.select = (view) =>
+          for current in @scope.views
+            current.selected = false
+          view.selected = true
+        @_handleEvents()
+
+      addView: (view) ->
+        if @scope.views.length is 0
+          @scope.select(view)
+        @scope.views.push(view)
+
+      _handleEvents: ->
+        # window.jwerty.key("cmd+1", => @scope.select(@scope.views[0]))
+        # window.jwerty.key("cmd+2", => @scope.select(@scope.views[1]))
+        # window.jwerty.key("cmd+3", => @scope.select(@scope.views[2]))
+        # window.jwerty.key("cmd+4", => @scope.select(@scope.views[3]))
+
+  ngModule.directive "skView", ->
+    require: "^skViews"
+    replace: true
+    restrict: "E"
+    transclude: true
+    scope:
+      name: "@"
+    template: """
+    <div class="sk-view" ng-show="selected" ng-transclude></div>
+    """
+    link: (scope, el, attrs, parent) ->
+      parent.addView(scope)
+
+  #
+  # Checklist
+  #
+
+  ngModule.directive "skChecklist", ->
+    restrict: "E"
+    replace: true
+    transclude: true
+    template: """
+    <div class="sk-checklist" ng-transclude></div>
+    """
+    controller: class
+
+      @$inject = ["$scope"]
+
+      constructor: (@scope) ->
+        @scope.current = 0
+        @scope.items = []
+        @_handleEvents()
+
+      addItem: (item) ->
+        if @scope.items.length is 0
+          item.current = true
+        @scope.items.push(item)
+
+      _handleEvents: ->
+        window.jwerty.key("up", =>
+          @scope.$apply(=>
+            @scope.items[@scope.current].current = false
+            if @scope.current > 0
+              @scope.current -= 1
+            @scope.items[@scope.current].current = true
+          )
+        )
+        window.jwerty.key("down", =>
+          @scope.$apply(=>
+            @scope.items[@scope.current].current = false
+            if @scope.current < @scope.items.length - 1
+              @scope.current += 1
+            @scope.items[@scope.current].current = true
+          )
+        )
+        window.jwerty.key("enter", =>
+          @scope.$apply(=>
+            item = @scope.items[@scope.current]
+            item.selected = not item.selected
+          )
+        )
+
+  ngModule.directive "skCheckitem", ->
+    require: "^skChecklist"
+    replace: true
+    restrict: "E"
+    transclude: true
+    template: """
+    <div class="sk-checkitem" ng-click="select()" ng-class="{current: current}">
+      <input type="checkbox" ng-checked="selected">
+      <span ng-transclude></span>
+    </div>
+    """
+    scope:
+      selected: '='
+      current: '@'
+    link: (scope, el, attrs, parent) ->
+      scope.current = true
+      parent.addItem(scope)
+      scope.select = ->
+        scope.selected = not scope.selected
