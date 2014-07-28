@@ -2,6 +2,24 @@
 module.exports = (ngModule) ->
 
   #
+  # Repository
+  #
+
+  ngModule.directive "gbRepository", ->
+    restrict: "E"
+    replace: true
+    template: """
+    <div class="gb-repository sk-box">
+      <span class="sk-right">
+        <span class="sk-icon icon-circle-cross"></span>
+      </span>
+      <span class="name">{{name}}</span>
+    </div>
+    """
+    scope:
+      name: "@"
+
+  #
   # Diff
   #
 
