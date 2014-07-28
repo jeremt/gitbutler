@@ -1,4 +1,5 @@
+.sk-textinput
+  input(ng-model="name" type="text" placeholder="branch name...")
+  button(ng-click="branches.create()") Create
 .sk-list
-  div master
-  div develop
-  div feature/test
+  gb-branch(ng-repeat="br in branchList" name="{{br.name}}")

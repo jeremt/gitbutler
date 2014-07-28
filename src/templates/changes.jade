@@ -1,19 +1,9 @@
 .sk-textinput
-  input(type="text", placeholder="your message...", ng-model="message")
+  input(type="text" placeholder="your message..." ng-model="message")
   button(ng-click="changes.commit(message)") commit
 sk-checklist
-
-  sk-checkitem(ng-repeat="file in files", selected="file.selected")
+  sk-checkitem(ng-repeat="file in files" selected="file.selected")
     gb-file-info(
-      name="{{file.name}}",
-      status="{{file.status}}",
+      name="{{file.name}}"
+      status="{{file.status}}"
     )
-
-  //- sk-checkitem(current=true)
-  //-   gb-file-info(name="app/index.coffee", status="modified")
-  //- sk-checkitem
-  //-   gb-file-info(name="app/controllers/app.coffee", status="modified")
-  //- sk-checkitem
-  //-   gb-file-info(name="app/controllers/settings.coffee", status="modified")
-  //- sk-checkitem
-  //-   gb-file-info(name="app/services/git.coffee", status="modified")

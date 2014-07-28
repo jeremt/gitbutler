@@ -36,11 +36,20 @@ module.exports = (ngModule) ->
           @scope.select(view)
         @scope.views.push(view)
 
+      selectIndex: (index) ->
+        return unless 0 <= index < @scope.views.length
+        @scope.$apply(=> @scope.select(@scope.views[index]))
+
       _handleEvents: ->
-        # window.jwerty.key("cmd+1", => @scope.select(@scope.views[0]))
-        # window.jwerty.key("cmd+2", => @scope.select(@scope.views[1]))
-        # window.jwerty.key("cmd+3", => @scope.select(@scope.views[2]))
-        # window.jwerty.key("cmd+4", => @scope.select(@scope.views[3]))
+        window.jwerty.key("cmd+1", => @selectIndex(0))
+        window.jwerty.key("cmd+2", => @selectIndex(1))
+        window.jwerty.key("cmd+3", => @selectIndex(2))
+        window.jwerty.key("cmd+4", => @selectIndex(3))
+        window.jwerty.key("cmd+5", => @selectIndex(4))
+        window.jwerty.key("cmd+6", => @selectIndex(5))
+        window.jwerty.key("cmd+7", => @selectIndex(6))
+        window.jwerty.key("cmd+8", => @selectIndex(7))
+        window.jwerty.key("cmd+9", => @selectIndex(8))
 
   ngModule.directive "skView", ->
     require: "^skViews"
@@ -123,3 +132,14 @@ module.exports = (ngModule) ->
       parent.addItem(scope)
       scope.select = ->
         scope.selected = not scope.selected
+
+  #
+  # List
+  #
+  ngModule.directive "skList", ->
+    restrict: "E"
+    transclude: true
+    template: """
+    <div class="sk-list" ng-transclude></div>
+    <button>Add</button>
+    """

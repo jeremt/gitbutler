@@ -6,7 +6,4 @@ require("./scripts/sk")(gitbutler)
 
 # Load directives
 require("./scripts/directives")(gitbutler)
-
-# Load controllers
-require("./scripts/controllers/app")(gitbutler)
-require("./scripts/controllers/views")(gitbutler)
+require("./scripts/controllers")(gitbutler)

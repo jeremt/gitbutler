@@ -1,11 +1,9 @@
+input(type="search" placeholder="search in commits...")
 .sk-list
-  div
-    .message Improve API
-    footer
-      span.date 6 days ago
-      span.author Jeremie Taboada
-  div
-    .message Improve API
-    footer
-      span.date 6 days ago
-      span.author Jeremie Taboada
+  gb-commit(
+    ng-repeat="commit in commits"
+    message="{{commit.message}}"
+    date="{{commit.date}}"
+    author="{{commit.author}}"
+    hash="{{commit.hash}}"
+  )
