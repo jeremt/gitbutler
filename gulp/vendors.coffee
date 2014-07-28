@@ -32,4 +32,10 @@ class Vendors extends Builder
     gulp.src(files)
       .pipe(gulp.dest(path.join(@dest, folder)))
 
+  buildVendors: (folder = "vendors/", ext) ->
+    ext ?= EXTENSIONS
+    files = @addFiles("buildVendors", ["#{folder}/**/*.{#{ext.join(',')}}"])
+    gulp.src(files)
+      .pipe(gulp.dest(path.join(@dest, folder)))
+
 module.exports = Vendors

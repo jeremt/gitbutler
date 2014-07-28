@@ -28,9 +28,9 @@ module.exports = (ngModule) ->
     <span class="file-info">
       <span class="sk-right sk-small">
         <span class="status">{{status}}</span>
-        <a ng-click="open()">open</a>
-        <a ng-click="edit()">edit</a>
-        <a ng-click="diff()">diff</a>
+        <span class="sk-icon icon-folder" ng-click="open()"></span>
+        <span class="sk-icon icon-paper" ng-click="edit()"></span>
+        <span class="sk-icon icon-paper-stack" ng-click="diff()"></span>
       </span>
       <span class="name">{{name}}</span>
     </span>
@@ -51,11 +51,9 @@ module.exports = (ngModule) ->
     restrict: "E"
     replace: true
     template: """
-    <div class="gb-branch">
+    <div class="sk-box">
       <span class="name">{{name}}</span>
-      <span class="sk-right sk-small">
-        X
-      </span>
+      <span class="sk-right sk-icon icon-circle-cross"></span>
     </div>
     """
     scope:
@@ -69,7 +67,7 @@ module.exports = (ngModule) ->
     restrict: "E"
     replace: true
     template: """
-    <div class="gb-commit">
+    <div class="gb-commit sk-box">
       <a class="sk-small sk-right">{{hash}}</a>
       <div class="message">{{message}}</div>
       <footer class="sk-small">

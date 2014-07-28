@@ -1,7 +1,11 @@
-input(type="search" placeholder="search in commits...")
+input(
+  ng-model="searchCommit"
+  type="search"
+  placeholder="search in commits..."
+)
 .sk-list
   gb-commit(
-    ng-repeat="commit in commits"
+    ng-repeat="commit in commits | filter:searchCommit"
     message="{{commit.message}}"
     date="{{commit.date}}"
     author="{{commit.author}}"

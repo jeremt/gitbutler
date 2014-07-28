@@ -44,7 +44,8 @@ gulp.task "buildApp", -> installer.buildApp()
 
 vendors = new Vendors()
 gulp.task "buildBower", -> vendors.buildBower()
-gulp.task "vendors", ["buildBower"]
+gulp.task "buildVendors", -> vendors.buildVendors()
+gulp.task "vendors", ["buildVendors", "buildBower"]
 
 gulp.task "build", ["buildPackage", "compile", "vendors"]
 

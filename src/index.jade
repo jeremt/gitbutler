@@ -1,27 +1,27 @@
 extends /partials/layout.jade
 block app
   sk-views
-    sk-view(name="repositories")
+    sk-view(name="repositories", icon="icon-server")
       #repositories(
         ng-controller="RepositoriesCtrl as repositories"
         ng-include="'templates/repositories.html'"
       )
-    sk-view(name="changes")
+    sk-view(name="changes", icon="icon-file")
       #changes(
         ng-controller="ChangesCtrl as changes"
         ng-include="'templates/changes.html'"
       )
-    sk-view(name="history")
+    sk-view(name="history", icon="icon-clock")
       #history(
         ng-controller="HistoryCtrl as history"
         ng-include="'templates/history.html'"
       )
-    sk-view(name="branches")
+    sk-view(name="branches", icon="icon-branch")
       #branches(
         ng-controller="BranchesCtrl as branches"
         ng-include="'templates/branches.html'"
       )
-    sk-view(name="settings")
+    sk-view(name="settings", icon="icon-cog")
       #settings(
         ng-controller="SettingsCtrl as settings"
         ng-include="'templates/settings.html'"

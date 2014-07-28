@@ -1,19 +1,24 @@
+.sk-form
 
-.description merge mode
-select(name="merge")
-  option Rebase
-  option Pull
+  .sk-description Merge mode
+  .sk-select
+    select(name="merge")
+      option Rebase
+      option Pull
+    span.icon-arrow-right
 
-.description theme 
-select(name="theme")
-  option Flat
-  option Squared
-  option Blured
-  option Dark
-  option Clear
+  .sk-description Graphic theme
+  .sk-select
+    select(name="theme")
+      option Flat
+      option Squared
+      option Blured
+      option Dark
+      option Clear
+    span.icon-arrow-right
 
-.description gitignore
-textarea
-  | bower_components
-  | node_modules
-  | *~
+  .sk-description Gitignore
+  textarea
+    | bower_components
+    | node_modules
+    | *~

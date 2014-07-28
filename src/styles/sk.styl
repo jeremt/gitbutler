@@ -1,11 +1,30 @@
 
+// Dependencies
+
+@import url("vendors/bariol/bariol.css")
+@import url("vendors/feather/feather.css")
+
 // Config
 
 small_space = 10px
+big_space = small_space * 4
 color_primary = #3498db
 color_background = #2c3e50
 border_size = 3px
 border_radius = 0
+font_title = 'bariol' sans-serif
+font_body = 'bariol' sans-serif
+transition_duration = .25s
+
+// Anims
+
+@keyframes appear
+  from
+    opacity 0
+    transform scale(0.9)
+  to
+    opacity 1
+    transform scale(1)
 
 // Reset
 
@@ -14,6 +33,8 @@ body
   padding 0
   margin 0
   color #222
+  font-family font_body
+  font-size 1.2em
 
 *, *:before, *:after
   box-sizing inherit
@@ -24,12 +45,27 @@ p
 
 // General
 
+.sk-description
+  font-size 1.3em
+
 .sk-small
   font-size .8em
   color #aaa
 
 .sk-right
   float right
+
+.sk-icon
+  cursor pointer
+  color #888
+  &:hover
+    color #444
+
+.sk-box
+  padding 10px
+  background #eee
+  margin-top 10px
+  border 3px solid #ccc
 
 a
   color color_primary
@@ -47,12 +83,18 @@ a
   margin-bottom small_space
 
 button
+  .sk-icon
+    color #fff
+    margin-right 10px
+    &:hover
+      color #fff
+  font-family font_body
   margin 0
   padding small_space
   background color_primary
   color white
   border none
-  font-size .8em
+  font-size 1em
   border-radius border_radius
   outline none
   cursor pointer
@@ -61,7 +103,8 @@ button
     background darken(color_primary, 10)
 
 input[type="text"], input[type="search"], textarea
-  font-size .8em
+  font-family font_body
+  font-size 1em
   border border_size solid #ccc
   padding small_space
   margin 0
@@ -75,18 +118,42 @@ textarea
   margin small_space 0
   min-height 200px
 
-select
-  padding small_space
-  margin small_space 0
-  outline none
+.sk-select
+  position relative
+  span
+    position relative
+    right 35px
+    color #aaa
+  select
+    cursor pointer
+    font-family font_body
+    font-size .9em
+    -webkit-appearance none
+    border-radius 0
+    border border_size solid #ccc
+    padding small_space small_space * 2
+    background #fff
+    margin small_space 0
+    outline none
+    min-width 200px
+    &:hover
+      border border_size solid color_primary
 
 nav
   padding small_space
   background color_background
-  button
-    margin-right small_space
-    &:last-child
-      margin-right 0
+  text-align center
+  .sk-icon
+    transition transition_duration
+    padding small_space small_space * 2
+    font-size 2em
+    color #aaa
+    &:hover
+      color #aaa
+      transform scale(1.2)
+    &.selected
+      color #fff
+      transform scale(1.2)
 
 // Directives
 
@@ -105,8 +172,8 @@ nav
     border-radius 0 border_radius border_radius 0
 
 .sk-view
-  padding small_space
-  animation scaleIn 2s
+  padding big_space
+  animation appear transition_duration
 
 .sk-checklist
   padding small_space 0
@@ -115,5 +182,7 @@ nav
   padding small_space
   color #444
   cursor pointer
+  border border_size solid transparent
   &.current
     background #eee
+    border border_size solid #ccc

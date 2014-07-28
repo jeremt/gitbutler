@@ -10,12 +10,12 @@ module.exports = (ngModule) ->
     transclude: true
     template: """
     <nav>
-      <button
+      <span
         ng-repeat="view in views"
         ng-click="select(view)"
+        class="sk-icon {{view.icon}}"
         ng-class="{selected: view.selected}">
-          {{view.name}}
-      </button>
+      </span>
     </nav>
     <div class="sk-container" ng-transclude></div>
     """
@@ -58,6 +58,7 @@ module.exports = (ngModule) ->
     transclude: true
     scope:
       name: "@"
+      icon: "@"
     template: """
     <div class="sk-view" ng-show="selected" ng-transclude></div>
     """

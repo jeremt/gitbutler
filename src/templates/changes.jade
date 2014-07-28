@@ -1,6 +1,6 @@
 .sk-textinput
-  input(type="text" placeholder="your message..." ng-model="message")
-  button(ng-click="changes.commit(message)") commit
+  input(type="text" placeholder="your message..." ng-model="commit.message")
+  button(ng-click="changes.commit()") commit
 sk-checklist
   sk-checkitem(ng-repeat="file in files" selected="file.selected")
     gb-file-info(
