@@ -8,10 +8,13 @@ pkg         = require "../package.json"
 
 # Compile the files
 compiler = new Compiler(src: "./src", dest: "./app")
+gulp.task "compileSettings", ->
+  gulp.src("./src/settings.json").pipe(gulp.dest("./app"))
 gulp.task "compileScripts", -> compiler.compileScripts()
 gulp.task "compileStyles", -> compiler.compileStyles()
 gulp.task "compileMarkup", -> compiler.compileMarkup()
 gulp.task "compile", [
+  "compileSettings"
   "compileScripts"
   "compileStyles"
   "compileMarkup"

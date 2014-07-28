@@ -1,0 +1,36 @@
+{
+  "localRefresh": 1.0,
+  "remoteRefresh": 30.0,
+  "mergeMode": {
+    "choices": ["rebase", "pull"],
+    "current": 0
+  },
+  "theme": {
+    "choices": ["flat", "squared", "dark"],
+    "current": 1
+  },
+  "menuStyle": {
+    "choices": ["icon", "icon+text", "text"],
+    "current": 0
+  },
+  "repositories": {
+    "list": [
+      {
+        "alias": "artwork",
+        "name": "artwork",
+        "path": "/Users/jeremietaboada/Projects/Stupeflix/artwork"
+      },
+      {
+        "alias": "craftools",
+        "name": "craftools",
+        "path": "/Users/jeremietaboada/Projects/Stupeflix/craftools"
+      },
+      {
+        "alias": "director",
+        "name": "director",
+        "path": "/Users/jeremietaboada/Projects/Stupeflix/director"
+      }
+    ],
+    "current": 0
+  }
+}
