@@ -17,18 +17,15 @@
     "list": [
       {
         "alias": "artwork",
-        "name": "artwork",
-        "path": "/Users/jeremietaboada/Projects/Stupeflix/artwork"
+        "folder": "/Users/jeremietaboada/Projects/Stupeflix/artwork"
       },
       {
         "alias": "craftools",
-        "name": "craftools",
-        "path": "/Users/jeremietaboada/Projects/Stupeflix/craftools"
+        "folder": "/Users/jeremietaboada/Projects/Stupeflix/craftools"
       },
       {
         "alias": "director",
-        "name": "director",
-        "path": "/Users/jeremietaboada/Projects/Stupeflix/director"
+        "folder": "/Users/jeremietaboada/Projects/Stupeflix/director"
       }
     ],
     "current": 0

@@ -1,6 +1,6 @@
 
 {EventEmitter} = require "events"
-gui = require "nw.gui"
+gui = window.require "nw.gui"
 
 class ToolboxService extends EventEmitter
 
@@ -15,12 +15,17 @@ class ToolboxService extends EventEmitter
     gui.Shell.showItemInFolder(file)
 
   # Open a dialog the open the given file.
-  openFile: (file, {folder, next} = {}) ->
+  openFile: (next, {folder} = {}) ->
     unless @fileInput
       @fileInput = window.document.createElement('input')
       @fileInput.type = 'file'
     @fileInput.nwdirectory = folder ? false
-    @fileInput.addEventListener("change", -> next?(@value))
+    running = true
+    @fileInput.addEventListener("change", ->
+      if running
+        next(@value)
+        running = false
+    )
     @fileInput.click()
 
 module.exports = ToolboxService

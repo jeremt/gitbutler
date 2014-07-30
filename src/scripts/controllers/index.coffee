@@ -1,4 +1,6 @@
 
+path = require "path"
+
 module.exports = (ngModule) ->
 
   #
@@ -7,15 +9,38 @@ module.exports = (ngModule) ->
 
   ngModule.controller "RepositoriesCtrl", class
 
-    @$inject = ["$scope"]
+    @$inject = [
+      "$rootScope"
+      "$scope"
+      "ToolboxService"
+      "GitService"
+      "SettingsService"
+    ]
 
-    constructor: (@scope) ->
-      @scope.current = 0
-      @scope.repositories = [
-        {name: "craftboy"}
-        {name: "artwork"}
-        {name: "director"}
-      ]
+    constructor: (@rootScope, @scope, @toolbox, @git, @settings) ->
+      @scope.data = @settings.cfg.repositories.serialize()
+      @rootScope.$on("refresh", =>
+        @scope.data = @settings.cfg.repositories.serialize()
+        if @scope.$$phase is null
+          @scope.$apply()
+      )
+
+    open: ->
+      @toolbox.openFile(((f) => @_add(f)), folder: true)
+
+    clone: ->
+      window.alert('Work in progress...')
+
+    create: ->
+      window.alert('Work in progress...')
+
+    _add: (folder) ->
+      return unless folder
+      alias = path.basename(folder)
+      if @settings.cfg.repositories.list.find((r) -> r.alias is alias) is false
+        @settings.cfg.repositories.list.push(alias: alias, folder: folder)
+      else
+        console.warn "Repository #{alias} already exists..."
 
   #
   # Changes

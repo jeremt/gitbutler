@@ -5,19 +5,38 @@ module.exports = (ngModule) ->
   # Repository
   #
 
-  ngModule.directive "gbRepository", ->
-    restrict: "E"
-    replace: true
-    template: """
-    <div class="gb-repository sk-box">
-      <span class="sk-right">
-        <span class="sk-icon icon-circle-cross"></span>
-      </span>
-      <span class="name">{{name}}</span>
-    </div>
-    """
-    scope:
-      name: "@"
+  ngModule.directive "gbRepository", [
+
+    "SettingsService"
+    "$rootScope"
+
+    (settings, rootScope) ->
+      restrict: "E"
+      replace: true
+      template: """
+      <div
+        ng-click="select()"
+        class="gb-repository sk-box"
+        ng-class="{selected: current}">
+        <span class="sk-right">
+          <span ng-click="remove()" class="sk-icon icon-circle-cross"></span>
+        </span>
+        <span class="alias">{{alias}}</span>
+      </div>
+      """
+      scope:
+        alias: "@"
+        index: "="
+      link: (scope) ->
+        scope.current = scope.index is settings.cfg.repositories.current
+        scope.select = ->
+          settings.cfg.repositories.current = scope.index
+        scope.remove = ->
+          settings.cfg.repositories.list.splice(settings.cfg.repositories.current, 1)
+        rootScope.$on "refresh", ->
+          scope.current = scope.index is settings.cfg.repositories.current
+
+    ]
 
   #
   # Diff
@@ -71,7 +90,11 @@ module.exports = (ngModule) ->
     template: """
     <div class="sk-box">
       <span class="name">{{name}}</span>
-      <span class="sk-right sk-icon icon-circle-cross"></span>
+      <span class="sk-right">
+        <span class="sk-icon icon-cloud-upload"></span>
+        <span class="sk-icon icon-cloud-download"></span>
+        <span class="sk-icon icon-circle-cross"></span>
+      </span>
     </div>
     """
     scope:

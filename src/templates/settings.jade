@@ -1,5 +1,11 @@
 .sk-form
 
+  .sk-description Refresh
+  label Local
+  input(type="text", value="1.0")
+  label Remote
+  input(type="text", value="60.0")
+
   .sk-description Merge mode
   .sk-select
     select(name="merge")
@@ -10,11 +16,7 @@
   .sk-description Theme
   .sk-select
     select(name="theme")
-      option Flat
-      option Squared
-      option Blured
-      option Dark
-      option Clear
+      option Default
     span.icon-arrow-right
 
   .sk-description Menu style

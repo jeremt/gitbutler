@@ -1,37 +1,28 @@
 
 path = require "path"
 fs = require "fs"
-{EventEmitter} = require("events")
+{EventEmitter} = require "events"
+Observable = require "../tools/observable"
 
-class SettingsService extends EventEmitter
+class SettingsService
 
-    root = "/Users/jeremietaboada/.gitbutler"
+  @$inject = ["$rootScope"]
 
-    constructor: ->
-        if fs.existsSync(root) is false
-            fs.mkdirSync(root)
-            str = fs.readFileSync(path.resolve("settings.json"))
-        else
-            str = fs.readFileSync(path.join(root, "settings.json"))
-        @data = JSON.parse(str)
+  constructor: (@scope) ->
+    @_folder = path.join(process.env.HOME, ".gitbutler")
+    @_jsonFile = path.join(@_folder, "settings.json")
+    unless fs.existsSync(@_folder)
+      fs.mkdirSync(@_folder)
+    if fs.existsSync(@_jsonFile)
+      @_createCfg(@_jsonFile)
+    else
+      @_createCfg(path.resolve("settings.json"))
 
-    set: (name, value) ->
-        @data[name] = value
-        @save()
+  _createCfg: (file) ->
+    @cfg = new Observable(JSON.parse(fs.readFileSync(file)))
+    @cfg.on("refresh", (key) =>
+      @scope.$emit("refresh")
+      fs.writeFile(@_jsonFile, JSON.stringify(@cfg.serialize(), null, 2))
+    )
 
-    add: (name, value) ->
-        @data[name]?.push?(value)
-        @save()
-
-    remove: (name, index) ->
-        @data[name]?.splice?(index, 1)
-        @save()
-
-    get: (name) ->
-        @data[name]
-
-    save: ->
-        fs.writeFile(path.join(root, "settings.json"), JSON.stringify(@data, null, 2))
-        @
-
-exports.Settings = SettingsService
+module.exports = SettingsService

@@ -1,14 +1,18 @@
 .sk-button-group
-  button
+  button(ng-click="repositories.create()")
     span.sk-icon.icon-circle-plus
     | Create
-  button
+  button(ng-click="repositories.open()")
     span.sk-icon.icon-folder
     | Open
-  button
+  button(ng-click="repositories.clone()")
     span.sk-icon.icon-cloud-download
     | Clone
-.sk-list
-  gb-repository(name="craftboy")
-  gb-repository(name="artwork")
-  gb-repository(name="director")
+
+.sk-list(ng-show="data.list.length")
+  gb-repository(
+    ng-repeat="repo in data.list"
+    alias="{{repo.alias}}"
+    index="$index"
+  )
+p(ng-hide="data.list.length") No repository yet.
