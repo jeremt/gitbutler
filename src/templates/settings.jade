@@ -1,25 +1,22 @@
 .sk-form
 
-  .sk-description Refresh
-  label Local
-  input(type="text", value="1.0")
-  label Remote
-  input(type="text", value="60.0")
+  .sk-description General
 
-  .sk-description Merge mode
+  label Merge mode
   .sk-select
     select(name="merge")
       option Rebase
       option Pull
     span.icon-arrow-right
 
-  .sk-description Theme
+  .sk-description Appearence
+
+  label Theme
   .sk-select
     select(name="theme")
       option Default
     span.icon-arrow-right
-
-  .sk-description Menu style
+  label Menu buttons
   .sk-select
     select(name="theme")
       option Icon
@@ -28,9 +25,9 @@
     span.icon-arrow-right
 
   .sk-description Gitignore
+
   textarea
     | bower_components
     | node_modules
     | *~
-
   button Open JSON

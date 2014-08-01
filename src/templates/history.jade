@@ -5,9 +5,26 @@ input(
 )
 .sk-list
   gb-commit(
-    ng-repeat="commit in commits | filter:searchCommit"
+    ng-repeat="commit in commits.remote | filter:searchCommit"
     message="{{commit.message}}"
     date="{{commit.date}}"
     author="{{commit.author}}"
     hash="{{commit.hash}}"
+    type="remote"
+  )
+  gb-commit(
+    ng-repeat="commit in commits.local | filter:searchCommit"
+    message="{{commit.message}}"
+    date="{{commit.date}}"
+    author="{{commit.author}}"
+    hash="{{commit.hash}}"
+    type="local"
+  )
+  gb-commit(
+    ng-repeat="commit in commits.common | filter:searchCommit"
+    message="{{commit.message}}"
+    date="{{commit.date}}"
+    author="{{commit.author}}"
+    hash="{{commit.hash}}"
+    type="common"
   )

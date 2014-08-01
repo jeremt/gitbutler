@@ -10,5 +10,8 @@
     "coffee-script": "^1.7.1",
     "gulp-util": "^3.0.0",
     "node-webkit-builder": "0.0.3"
+  },
+  "dependencies": {
+    "supershell": "0.1.4"
   }
 }

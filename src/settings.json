@@ -1,19 +1,11 @@
 {
   "localRefresh": 1.0,
   "remoteRefresh": 30.0,
-  "mergeMode": {
-    "choices": ["rebase", "pull"],
-    "current": 0
-  },
-  "theme": {
-    "choices": ["flat", "squared", "dark"],
-    "current": 1
-  },
-  "menuStyle": {
-    "choices": ["icon", "icon+text", "text"],
-    "current": 0
-  },
+  "mergeMode": "rebase",
+  "theme": "default",
+  "menuStyle": "icon",
   "repositories": {
+    "current": 0,
     "list": [
       {
         "alias": "artwork",
@@ -27,7 +19,6 @@
         "alias": "director",
         "folder": "/Users/jeremietaboada/Projects/Stupeflix/director"
       }
-    ],
-    "current": 0
+    ]
   }
 }

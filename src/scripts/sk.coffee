@@ -144,3 +144,29 @@ module.exports = (ngModule) ->
     <div class="sk-list" ng-transclude></div>
     <button>Add</button>
     """
+
+  #
+  # Alert
+  #
+  ngModule.directive "skAlert", [
+
+    "AlertService" # TODO add this service in sk
+
+    (alert) ->
+      restrict: "E"
+      template: """
+      <div ng-click="hide()" ng-class="{shown: shown}" class="sk-alert">
+        {{label}}: {{message}}
+      </div>
+      """
+      link: (scope) ->
+        scope.shown ?= false
+        alert.on("message", (label, message) ->
+          scope.label = label
+          scope.message = message
+          scope.selected = true
+        )
+        scope.hide = ->
+          scope.selected = false
+
+  ]

@@ -13,6 +13,6 @@
   gb-repository(
     ng-repeat="repo in data.list"
     alias="{{repo.alias}}"
-    index="$index"
-  )
+    autoselect="data.current"
+    )
 p(ng-hide="data.list.length") No repository yet.
