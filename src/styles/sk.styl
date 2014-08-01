@@ -8,8 +8,13 @@
 
 small_space = 10px
 big_space = small_space * 4
+
 color_primary = #3498db
+color_error = #e2574c
+color_success = #2ecc71
 color_background = #2c3e50
+
+
 border_size = 3px
 border_radius = 0
 font_title = 'bariol' sans-serif
@@ -169,6 +174,27 @@ nav
   margin-top nav_height
 
 // Directives
+
+.sk-alert
+  left 0
+  position fixed
+  width 100%
+  bottom -100px
+  padding small_space * 2
+  color white
+  cursor pointer
+  transition .3s
+  &.selected
+    bottom 0px
+  &.info
+    background color_primary
+    border border_size solid darken(color_primary, 10)
+  &.success
+    background color_success
+    border border_size solid darken(color_success, 10)
+  &.error
+    background color_error
+    border border_size solid darken(color_error, 10)
 
 .sk-textinput
   display block

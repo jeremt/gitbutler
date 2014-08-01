@@ -1,21 +1,24 @@
 
-class AlertService
+{EventEmitter} = require "events"
+
+class AlertService extends EventEmitter
 
   constructor: ->
     @_previousMessage = null
 
   info: (message, {btn, btnFn, force} = {}) ->
-    @_createPopup(message, btn, btnFn, force, "Info")
+    @_createPopup(message, btn, btnFn, force, "info")
 
-  warning: (message, {btn, btnFn, force} = {}) ->
-    @_createPopup(message, btn, btnFn, force, "Warning")
+  success: (message, {btn, btnFn, force} = {}) ->
+    @_createPopup(message, btn, btnFn, force, "success")
 
   error: (message, {btn, btnFn, force} = {}) ->
-    @_createPopup(message, btn, btnFn, force, "Error")
+    @_createPopup(message, btn, btnFn, force, "error")
 
   _createPopup: (message, btn, btnFn, force, label) ->
     if @_previousMessage isnt message or force
-      window.alert("#{label}: #{message}")
+      # window.alert("#{label}: #{message}")
+      @emit("message", label, message)
       @_previousMessage = message
 
 

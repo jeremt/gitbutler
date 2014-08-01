@@ -155,8 +155,8 @@ module.exports = (ngModule) ->
     (alert) ->
       restrict: "E"
       template: """
-      <div ng-click="hide()" ng-class="{shown: shown}" class="sk-alert">
-        {{label}}: {{message}}
+      <div ng-click="hide()" ng-class="{selected: shown}" class="sk-alert {{label}}">
+        {{message}}
       </div>
       """
       link: (scope) ->
@@ -164,9 +164,11 @@ module.exports = (ngModule) ->
         alert.on("message", (label, message) ->
           scope.label = label
           scope.message = message
-          scope.selected = true
+          scope.shown = true
+          if scope.$$phase
+            scope.$apply()
         )
         scope.hide = ->
-          scope.selected = false
+          scope.shown = false
 
   ]
