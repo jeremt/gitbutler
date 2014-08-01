@@ -5,7 +5,7 @@ module.exports = ->
       status: "@"
       name: "@"
     template: """
-    <span class="file-info">
+    <div class="file-info sk-box">
       <span class="sk-right sk-small">
         <span class="status">{{status}}</span>
         <span class="sk-icon icon-folder" ng-click="open()"></span>
@@ -13,7 +13,7 @@ module.exports = ->
         <span class="sk-icon icon-paper-stack" ng-click="diff()"></span>
       </span>
       <span class="name">{{name}}</span>
-    </span>
+    </div>
     """
     link: (scope) ->
       scope.open = ->

@@ -15,14 +15,17 @@
     color #fff
     transform translateY(3px) rotate(-90deg) scale(1.2)
 
+.gb-commit-input
+  margin-bottom 20px
+
 .gb-commit
 
   &.remote
-    border 3px solid #3498db
+    border border_size solid color_primary
     &:hover
-      border 3px solid darken(#3498db, 10)
+      border border_size solid darken(color_primary, 10)
 
   &.local
-    border 3px solid #2ecc71
+    border border_size solid color_success
     &:hover
-      border 3px solid darken(#2ecc71, 10)
+      border border_size solid darken(color_success, 10)
