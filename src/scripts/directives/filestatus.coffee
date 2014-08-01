@@ -4,8 +4,9 @@ module.exports = ->
     scope:
       status: "@"
       name: "@"
+      type: "@"
     template: """
-    <div class="file-info sk-box">
+    <div ng-dblclick="updateIndex()" class="gb-file-status sk-box">
       <span class="sk-right sk-small">
         <span class="status">{{status}}</span>
         <span class="sk-icon icon-folder" ng-click="open()"></span>
@@ -22,3 +23,8 @@ module.exports = ->
         window.alert("Edit #{scope.name}!")
       scope.diff = ->
         window.alert("Diff #{scope.name}!")
+      scope.updateIndex = ->
+        if scope.type in ["unstaged", "conflicted"]
+          window.alert("Add #{scope.name}")
+        else
+          window.alert("Reset #{scope.name}")
