@@ -10,21 +10,35 @@ module.exports = (ngModule) ->
     transclude: true
     template: """
     <nav>
-      <span
+
+      <span ng-show="mode === 'icon'"
         ng-repeat="view in views"
         ng-click="select(view)"
         class="sk-icon {{view.icon}}"
         ng-class="{selected: view.selected}">
       </span>
+
+      <button ng-show="mode === 'text'"
+        ng-repeat="view in views"
+        ng-click="select(view)"
+        ng-class="{selected: view.selected}">
+          {{view.name}}
+      </button>
+
     </nav>
     <div class="sk-container" ng-transclude></div>
     """
     controller: class
 
-      @$inject = ["$scope"]
+      @$inject = ["$scope", "SettingsService"]
 
-      constructor: (@scope) ->
+      constructor: (@scope, @settings) ->
+        @settings.on("refresh", =>
+          @scope.mode = @settings.cfg.menuStyle
+        )
+
         @scope.views = []
+        @scope.mode = @settings.cfg.menuStyle
         @scope.select = (view) =>
           for current in @scope.views
             current.selected = false

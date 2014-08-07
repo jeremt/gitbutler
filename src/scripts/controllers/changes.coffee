@@ -42,7 +42,8 @@ class ChangesCtrl
     @scope.files?.conflicted?.length is 0
 
   commit: (message) ->
-    window.alert("Commit #{@scope.commit.message}")
-    @scope.commit.message = ""
+    @git.ctx.exec("commit", @scope.commit.message).on("success", =>
+      @scope.commit.message = ""
+    )
 
 module.exports = ChangesCtrl

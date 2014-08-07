@@ -6,14 +6,14 @@
   max-width 960px
 
 .sk-icon.icon-branch
-  transform translateY(3px) rotate(-90deg)
+  transform translate(-3px, 3px) rotate(-65deg)
   &:before
     content: "\e081"
   &:hover
-    transform translateY(3px) rotate(-90deg) scale(1.2)
+    transform translate(-3px, 3px) rotate(-65deg) scale(1.2)
   &.selected
     color #fff
-    transform translateY(3px) rotate(-90deg) scale(1.2)
+    transform translate(-3px, 3px) rotate(-65deg) scale(1.2)
 
 .gb-file-status
   &:last-child
@@ -25,11 +25,13 @@
 .gb-commit
 
   &.remote
+    background lighten(color_primary, 45)
     border border_size solid color_primary
     &:hover
       border border_size solid darken(color_primary, 10)
 
   &.local
+    background lighten(color_success, 45)
     border border_size solid color_success
     &:hover
       border border_size solid darken(color_success, 10)

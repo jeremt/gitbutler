@@ -1,27 +1,22 @@
 .sk-form
 
-  h2 General
-
-  label Merge mode
-  .sk-select
-    select(name="merge")
-      option Rebase
-      option Pull
-    span.icon-arrow-right
-
   h2 Appearence
 
   label Theme
   .sk-select
-    select(name="theme")
-      option Default
+    select(
+      ng-model="theme"
+      ng-change="settings.update('theme', theme)"
+      ng-options="t for t in themes"
+    )
     span.icon-arrow-right
   label Menu buttons
   .sk-select
-    select(name="theme")
-      option Icon
-      option Icon+Text
-      option Text
+    select(
+      ng-model="menuStyle"
+      ng-change="settings.update('menuStyle', menuStyle)"
+      ng-options="m for m in menuStyles"
+    )
     span.icon-arrow-right
 
   h2 Gitignore

@@ -28,7 +28,7 @@ class SettingsService extends EventEmitter
     @cfg = new Observable(JSON.parse(fs.readFileSync(file)))
     @cfg.on("refresh", (key) =>
       @emit("refresh")
-      fs.writeFile(@_jsonFile, JSON.stringify(@cfg.serialize(), null, 2))
+      fs.writeFileSync(@_jsonFile, JSON.stringify(@cfg.serialize(), null, 2))
     )
 
 module.exports = SettingsService
