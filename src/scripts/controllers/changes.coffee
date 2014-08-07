@@ -5,11 +5,6 @@ class ChangesCtrl
 
   constructor: (@scope, @git) ->
     @scope.commit = message: ""
-    @scope.files = 
-      staged: []
-      unstaged: []
-      conflicted: []
-
     @git.ctx.on("refresh", =>
       @scope.files = @git.ctx.scope.files
     )
@@ -40,6 +35,11 @@ class ChangesCtrl
     # [ MARC] - M modified
     # [ MARC] - D deleted
     # ? - ? untracked
+
+  isClean: ->
+    @scope.files?.staged?.length is 0 and
+    @scope.files?.unstaged?.length is 0 and
+    @scope.files?.conflicted?.length is 0
 
   commit: (message) ->
     window.alert("Commit #{@scope.commit.message}")

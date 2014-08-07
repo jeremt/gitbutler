@@ -1,4 +1,7 @@
-module.exports = ->
+
+path = require "path"
+
+module.exports = (git, toolbox) ->
     restrict: "E"
     replace: true
     scope:
@@ -18,9 +21,9 @@ module.exports = ->
     """
     link: (scope) ->
       scope.open = ->
-        window.alert("Open #{scope.file}!")
+        toolbox.showFile(path.join(git.ctx.scope.folder, scope.file))
       scope.edit = ->
-        window.alert("Edit #{scope.file}!")
+        toolbox.editFile(path.join(git.ctx.scope.folder, scope.file))
       scope.diff = ->
         window.alert("Diff #{scope.file}!")
       scope.updateIndex = ->
@@ -28,3 +31,5 @@ module.exports = ->
           window.alert("Add #{scope.file}")
         else
           window.alert("Reset #{scope.file}")
+
+module.exports.$inject = ["GitService", "ToolboxService"]

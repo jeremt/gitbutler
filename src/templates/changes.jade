@@ -2,6 +2,9 @@
   input(type="text" placeholder="your message..." ng-model="commit.message")
   button(ng-click="changes.commit()") commit
 
+div(ng-show="changes.isClean()")
+  | Working directory is clean.
+
 div(ng-show="files.staged.length")
   h2 Staged
   gb-file-status(
