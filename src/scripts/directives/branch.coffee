@@ -13,9 +13,9 @@ module.exports = [
       ng-click="select()">
       <span class="name">{{name}}</span>
       <span class="sk-right">
-        <span class="sk-icon icon-cloud-upload"></span>
-        <span class="sk-icon icon-cloud-download"></span>
-        <span class="sk-icon icon-circle-cross"></span>
+        <span ng-click="push()" class="sk-icon icon-cloud-upload"></span>
+        <span ng-click="pull()" class="sk-icon icon-cloud-download"></span>
+        <span ng-click="remove()" class="sk-icon icon-circle-cross"></span>
       </span>
     </div>
     """
@@ -26,4 +26,11 @@ module.exports = [
         git.ctx.exec("checkout", scope.name)
       scope.isCurrent = ->
         scope.name is git.ctx.scope.branches.current
+      scope.push = ->
+        window.alert("push origin #{scope.name}")
+      scope.pull = ->
+        window.alert("pull --rebase origin #{scope.name}")
+      scope.remove = ->
+        if window.confirm("Are you sure?")
+          window.alert("branch -D #{scope.name}")
 ]

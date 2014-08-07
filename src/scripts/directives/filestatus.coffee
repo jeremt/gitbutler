@@ -28,8 +28,8 @@ module.exports = (git, toolbox) ->
         window.alert("Diff #{scope.file}!")
       scope.updateIndex = ->
         if scope.type in ["unstaged", "conflicted"]
-          window.alert("Add #{scope.file}")
+          git.ctx.exec('stage', scope.file)
         else
-          window.alert("Reset #{scope.file}")
+          git.ctx.exec('unstage', scope.file)
 
 module.exports.$inject = ["GitService", "ToolboxService"]
