@@ -19,10 +19,7 @@
     )
     span.icon-arrow-right
 
-  h2 Gitignore
-
-  textarea
-    | bower_components
-    | node_modules
-    | *~
-  button Open JSON
+  h2 Files
+  .sk-button-group
+    button(ng-click="settings.openSettings()") open settings
+    button(ng-click="settings.openGitignore()") open gitignore

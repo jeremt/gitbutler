@@ -11,9 +11,9 @@ TODO
     - Create/Clone repository
     - Show diff
 - Merge branches by drag'n drop
-- Add footer error/success notifications
 - Ask user reset or patch when push force by someone else
-- Automatic conflit resolving by showing the current conflicted file in fullscreen
+- Special conflicts UI: showing the current conflicted file in fullscreen
+- Handle when detached from head
 
 BUGS
 ----

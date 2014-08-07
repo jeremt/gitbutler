@@ -6,7 +6,9 @@ Observable = require "../tools/observable"
 
 class SettingsService extends EventEmitter
 
-  constructor: ->
+  @$inject = ["ToolboxService"]
+
+  constructor: (@toolbox) ->
     @_folder = path.join(process.env.HOME, ".gitbutler")
     @_jsonFile = path.join(@_folder, "settings.json")
     unless fs.existsSync(@_folder)
@@ -15,6 +17,9 @@ class SettingsService extends EventEmitter
       @_createCfg(@_jsonFile)
     else
       @_createCfg(path.resolve("settings.json"))
+
+  open: ->
+    @toolbox.editFile(@_jsonFile)
 
   getCurrentRepository: ->
     @cfg.repositories.list.at(@cfg.repositories.current)

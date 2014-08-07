@@ -1,6 +1,7 @@
 
 {EventEmitter} = require "events"
 sh = require "supershell"
+fs = require "fs"
 
 class GitService extends EventEmitter
 

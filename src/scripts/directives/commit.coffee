@@ -1,5 +1,5 @@
 
-module.exports = ->
+module.exports = (git) ->
   restrict: "E"
   replace: true
   template: """
@@ -19,4 +19,6 @@ module.exports = ->
     hash: "@"
   link: (scope) ->
     scope.select = ->
-      window.alert("Checkout commit #{scope.hash}")
+      git.ctx.exec("checkout", scope.hash)
+
+module.exports.$inject = ["GitService"]
