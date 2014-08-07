@@ -186,7 +186,7 @@ nav
   left 0
   position fixed
   width 100%
-  bottom -100px
+  bottom -200px
   padding small_space * 2
   color white
   cursor pointer
@@ -196,12 +196,18 @@ nav
   &.info
     background color_primary
     border border_size solid darken(color_primary, 10)
+    &:hover
+      background darken(color_primary, 10)
   &.success
     background color_success
     border border_size solid darken(color_success, 10)
+    &:hover
+      background darken(color_success, 10)
   &.error
     background color_error
     border border_size solid darken(color_error, 10)
+    &:hover
+      background darken(color_error, 10)
 
 .sk-textinput
   display block

@@ -1,22 +1,18 @@
 
 class ChangesCtrl
 
-  @$inject = ["$scope"]
+  @$inject = ["$scope", "GitService"]
 
-  constructor: (@scope) ->
+  constructor: (@scope, @git) ->
     @scope.commit = message: ""
     @scope.files = 
-      staged: [
-        {name: "app/index.coffee", status: "modified", selected: true}
-        {name: "app/gulp/index.coffee", status: "added", selected: false}
-        {name: "app/services/index.coffee",    status: "untracked", selected: false}
-      ]
-      unstaged: [
-        {name: "app/services/git.coffee",    status: "modified", selected: false}
-        {name: "app/controllers/", status: "untracked", selected: false}
-      ]
-      conflicted: [
-      ]
+      staged: []
+      unstaged: []
+      conflicted: []
+
+    @git.ctx.on("refresh", =>
+      @scope.files = @git.ctx.scope.files
+    )
 
     # conflicts:
     # ---------

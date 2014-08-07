@@ -6,23 +6,23 @@ div(ng-show="files.staged.length")
   h2 Staged
   gb-file-status(
     ng-repeat="file in files.staged"
-    name="{{file.name}}"
-    status="{{file.status}}"
+    file="{{file.file}}"
+    label="{{file.label}}"
     type="staged"
   )
 div(ng-show="files.unstaged.length")
   h2 Unstaged
   gb-file-status(
     ng-repeat="file in files.unstaged"
-    name="{{file.name}}"
-    status="{{file.status}}"
+    file="{{file.file}}"
+    label="{{file.label}}"
     type="unstaged"
   )
 div(ng-show="files.conflicted.length")
   h2 Conflicted
   gb-file-status(
     ng-repeat="file in files.conflicted"
-    name="{{file.name}}"
-    status="{{file.status}}"
+    file="{{file.file}}"
+    label="{{file.label}}"
     type="conflicted"
   )

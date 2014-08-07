@@ -5,8 +5,8 @@ class SettingsCtrl
 
   constructor: (@scope, @settings) ->
     # scope.cfg = @settings.cfg
-    console.log("settings: ", @settings.cfg.mergeMode)
-    console.log("settings: ", @settings.cfg.theme)
-    console.log("settings: ", @settings.cfg.menuStyle)
+    # console.log("settings: ", @settings.cfg.mergeMode)
+    # console.log("settings: ", @settings.cfg.theme)
+    # console.log("settings: ", @settings.cfg.menuStyle)
 
 module.exports = SettingsCtrl

@@ -9,12 +9,14 @@ class GitService extends EventEmitter
   constructor: (@settings, @alert) ->
     @ctx = sh.git
     @ctx.refresh(@settings.cfg.localRefresh, [
-      "files"
-      "commits"
       "branches"
-      "resolve"
+      "files"
     ])
-    @ctx.refresh(@settings.cfg.remoteRefresh, ["rebasing"])
+    @ctx.refresh(@settings.cfg.remoteRefresh, [
+      "rebasing"
+      "resolve"
+      "commits"
+    ])
     @ctx.on("fail", (message) =>
       @alert.error(message)
     )

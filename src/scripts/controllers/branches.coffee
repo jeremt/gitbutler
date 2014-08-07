@@ -6,6 +6,7 @@ class BranchesCtrl
   constructor: (@scope, @git) ->
     @scope.data = {}
     @git.ctx.on("refresh", =>
+      
       @scope.data =
         list: @git.getBranches()
     )

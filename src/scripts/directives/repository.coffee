@@ -25,11 +25,8 @@ module.exports = [
       scope.select = ->
         settings.cfg.repositories.current = scope.getIndex()
         current = settings.getCurrentRepository()
+        git.ctx.scope.folder = current.folder
         git.ctx.exec("open", current.folder)
-          .on("success", -> git.ctx.scope.folder)
-          .on("fail", (message) ->
-            alert.error message
-          )
 
       scope.getIndex = ->
         settings.cfg.repositories.list.findIndex((repo) ->

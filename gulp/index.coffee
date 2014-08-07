@@ -28,7 +28,7 @@ NW_PACKAGE =
   "no-edit-menu": true
   "window":
     # "frame": false
-    # "toolbar": false
+    "toolbar": false
     "transparent": true
     "title": "Gitbutler"
     "width": 600
