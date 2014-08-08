@@ -179,7 +179,7 @@ module.exports = (ngModule) ->
           scope.label = label
           scope.message = message
           scope.shown = true
-          if scope.$$phase
+          unless scope.$$phase
             scope.$apply()
         )
         scope.hide = ->

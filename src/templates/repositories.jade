@@ -1,13 +1,13 @@
 .sk-button-group
   button(ng-click="repositories.create()")
     span.sk-icon.icon-circle-plus
-    | Create
+    | create
   button(ng-click="repositories.open()")
     span.sk-icon.icon-folder
-    | Open
+    | open
   button(ng-click="repositories.clone()")
     span.sk-icon.icon-cloud-download
-    | Clone
+    | clone
 
 .sk-list(ng-show="data.list.length")
   gb-repository(

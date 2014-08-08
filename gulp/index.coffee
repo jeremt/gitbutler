@@ -31,7 +31,8 @@ NW_PACKAGE =
     # "toolbar": false
     "transparent": true
     "title": "Gitbutler"
-    "width": 800
+    "min_width": 650
+    "width": 650
     "height": 800
     "position": "center"
     "as_desktop": true
