@@ -198,7 +198,7 @@ module.exports = (ngModule) ->
       <div class="sk-overlay" ng-show="visible">
         <header>
           <div ng-click="hide()" class="close sk-right icon-cross"></div>
-          <h2>{{title}}</h2>
+          <h2 class="sk-center">{{title}}</h2>
         </header>
         <div class="content" ng-transclude>
         </div>
@@ -206,7 +206,6 @@ module.exports = (ngModule) ->
       """
       transclude: true
       scope:
-        title: "@"
         id: "@"
       link: (scope) ->
         scope.visible = false

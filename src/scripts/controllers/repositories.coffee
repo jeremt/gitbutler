@@ -27,10 +27,10 @@ class RepositoriesCtrl
     @toolbox.openFile(((f) => @_add(f)), folder: true)
 
   clone: ->
-    @overlay.emit("show", "clone-repository")
+    @overlay.emit("show", "clone-repository", "Clone a repository")
 
   create: ->
-    @overlay.emit("show", "create-repository")
+    @overlay.emit("show", "create-repository", "Create a repository")
 
   _hasRepository: (alias) ->
     @settings.cfg.repositories.list.find((r) -> r.alias is alias) is false

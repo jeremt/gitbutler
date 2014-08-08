@@ -22,6 +22,11 @@ class GitService extends EventEmitter
       @alert.error(message)
     )
 
+  getDiff: (file) ->
+    @ctx.exec("diff", file).on("success", (data) =>
+      @emit("diff", data)
+    )
+
   getBranches: ->
     list = @ctx.scope.branches.local
 

@@ -27,13 +27,13 @@ block app
         ng-include="'templates/settings.html'"
       )
 
-  sk-overlay(id="file-diff" title="")
-    | Here comes the file diff...
+  sk-overlay(id="file-diff")
+    gb-file-diff()
 
-  sk-overlay(id="create-repository" title="Create a repository")
+  sk-overlay(id="create-repository")
     | TODO
 
-  sk-overlay(id="clone-repository" title="Clone a repository")
+  sk-overlay(id="clone-repository")
     | TODO
 
   //- Will be used for all alert messages

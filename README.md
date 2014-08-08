@@ -14,8 +14,10 @@ TODO
 - Ask user reset or patch when push force by someone else
 - Special conflicts UI: showing the current conflicted file in fullscreen
 - Handle when detached from head
+- Add alert.info("Pushing data to remote 'origin/mybranch'...") 
+- Add alert.info("Pulling data from remote 'origin/mybranch'...") 
 
 BUGS
 ----
 
-- the program become very slow when you often change the current repository
+- Error when trying to log on branch with no remote (display only local commits when no upstream)
