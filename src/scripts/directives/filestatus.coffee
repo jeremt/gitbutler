@@ -25,7 +25,7 @@ module.exports = (git, toolbox, overlay) ->
     scope.edit = ->
       toolbox.editFile(path.join(git.ctx.scope.folder, scope.file))
     scope.diff = ->
-      git.getDiff(scope.file)
+      git.getDiff(scope.file, scope.type in ["unstaged", "conflicted"])
       overlay.emit("show", "file-diff", scope.file)
     scope.updateIndex = ->
       if scope.type in ["unstaged", "conflicted"]

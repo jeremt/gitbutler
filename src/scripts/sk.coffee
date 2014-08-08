@@ -207,14 +207,18 @@ module.exports = (ngModule) ->
       transclude: true
       scope:
         id: "@"
-      link: (scope) ->
-        scope.visible = false
-        scope.hide = ->
-          scope.visible = false
-        overlay.on("show", (id, title) ->
-          scope.visible = id is scope.id
-          if title?
-            scope.title = title
-        )
+      controller: class
+
+        @$inject = ["$scope"]
+
+        constructor: (@scope) ->
+          @scope.visible = false
+          @scope.hide = =>
+            @scope.visible = false
+          overlay.on("show", (id, title) =>
+            @scope.visible = id is @scope.id
+            if title?
+              @scope.title = title
+          )
 
   ]

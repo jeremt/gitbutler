@@ -16,32 +16,42 @@
     transform translate(-3px, 3px) rotate(-65deg) scale(1.2)
 
 .gb-file-diff
-  border border_size solid color_gray
-  overflow auto
-  height 600px // TODO: find how to do something "generic"
-  font-size .8em
-  .col
-    line-height 2em
-    float left
-    display inline-block
-    width big_space * 2
-    height 100%
-    background rgba(0, 0, 0, 0.05)
-    .lineno
-      display inline-block
-      width 30px
-      text-align center
-  .code
-    margin-left big_space * 2
-    .line
+  .diff-content
+    border border_size solid color_gray
+    overflow auto
+    height 600px // TODO: find how to do something "generic"
+    font-size .8em
+    .loading
+      color color_gray
+      font-size 2em
+      padding small_space * 2
+    .col
       line-height 2em
-      padding-left small_space
-      &.plus
-        background alpha(color_success, 0.2)
-      &.minus
-        background alpha(color_error, 0.2)
-  .lineno
-    font-family font_code
+      float left
+      display inline-block
+      width big_space * 2
+      height 100%
+      background rgba(0, 0, 0, 0.05)
+      .lineno
+        display inline-block
+        width 30px
+        text-align center
+    .code
+      margin-left big_space * 2
+      .line
+        line-height 2em
+        padding-left small_space
+        &.plus
+          background alpha(color_success, 0.2)
+        &.minus
+          background alpha(color_error, 0.2)
+    .lineno
+      font-family font_code
+
+  .sk-button-group
+    margin-top small_space * 2
+    button
+      width 60%
 
 .gb-file-status
   &:last-child

@@ -22,9 +22,9 @@ class GitService extends EventEmitter
       @alert.error(message)
     )
 
-  getDiff: (file) ->
+  getDiff: (file, stage) ->
     @ctx.exec("diff", file).on("success", (data) =>
-      @emit("diff", data)
+      @emit("diff", file, data, stage)
     )
 
   getBranches: ->
