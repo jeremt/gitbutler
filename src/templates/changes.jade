@@ -1,6 +1,11 @@
-.sk-textinput.gb-commit-input
+.sk-textinput.gb-commit-input(ng-hide="rebasing")
   input(type="text" placeholder="your message..." ng-model="commit.message")
   button(ng-click="changes.commit()") commit
+
+.sk-button-group(ng-show="rebasing")
+  button(ng-click="changes.abort()") Abort
+  button(ng-click="changes.skip()") Skip
+  button(ng-click="changes.continue()") Continue
 
 div(ng-show="changes.isClean()")
   | Working directory is clean.
