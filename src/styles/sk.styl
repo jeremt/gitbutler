@@ -13,7 +13,7 @@ color_primary = #3498db
 color_error = #e2574c
 color_success = #2ecc71
 color_background = #2c3e50
-
+color_gray = #ccc
 
 border_size = 3px
 border_radius = 0
@@ -56,6 +56,9 @@ p
   margin 0
 
 // General
+
+.sk-clearfix
+  clear both
 
 .sk-description
   font-size 1.3em
@@ -105,6 +108,14 @@ button
     &:hover
       color #fff
   font-family font_body
+    
+  &.sk-disabled
+    background color_gray
+    border border_size solid darken(color_gray, 10)
+    cursor default
+    &:hover
+      background color_gray
+
   margin 0
   padding small_space
   background color_primary
@@ -156,7 +167,7 @@ textarea
       border border_size solid color_primary
 
 nav
-  z-index 10 // should be on the top
+  z-index 1 // should be on the top
   padding small_space
   background color_background
   text-align center
@@ -251,3 +262,16 @@ nav
   &.current
     background #eee
     border border_size solid #ccc
+
+.sk-overlay
+  padding small_space big_space
+  position fixed
+  width 100%
+  height 100%
+  top 0
+  left 0
+  background rgba(255, 255, 255, 0.9)
+  z-index 2
+  .close
+    font-size 1.5em
+    cursor pointer

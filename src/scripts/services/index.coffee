@@ -5,3 +5,4 @@ module.exports = (ngModule) ->
   ngModule.service "ToolboxService", require("./toolbox")
   ngModule.service "SettingsService", require("./settings")
   ngModule.service "AlertService", require("./alert")
+  ngModule.service "OverlayService", require("./overlay")

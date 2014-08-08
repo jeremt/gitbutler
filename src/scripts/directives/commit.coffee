@@ -19,6 +19,7 @@ module.exports = (git) ->
     hash: "@"
   link: (scope) ->
     scope.select = ->
-      git.ctx.exec("checkout", scope.hash)
+      # If I do that, I should update to UI to handle it...
+      # git.ctx.exec("checkout", scope.hash)
 
 module.exports.$inject = ["GitService"]

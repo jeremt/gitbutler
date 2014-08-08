@@ -6,6 +6,9 @@ class AlertService extends EventEmitter
   constructor: ->
     @_previousMessage = null
 
+  reset: ->
+    @_previousMessage = null
+
   info: (message, {btn, btnFn, force} = {}) ->
     @_createPopup(message, btn, btnFn, force, "info")
 

@@ -25,13 +25,14 @@
 .gb-commit
 
   &.remote
+    opacity 0.5
     background lighten(color_primary, 45)
     border border_size solid color_primary
     &:hover
       border border_size solid darken(color_primary, 10)
 
   &.local
-    background lighten(color_success, 45)
-    border border_size solid color_success
+    background lighten(color_primary, 45)
+    border border_size solid color_primary
     &:hover
-      border border_size solid darken(color_success, 10)
+      border border_size solid darken(color_primary, 10)

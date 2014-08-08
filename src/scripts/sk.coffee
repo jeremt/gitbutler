@@ -184,5 +184,38 @@ module.exports = (ngModule) ->
         )
         scope.hide = ->
           scope.shown = false
+          alert.reset()
+
+  ]
+
+  ngModule.directive "skOverlay", [
+
+    "OverlayService"
+
+    (overlay) ->
+      restrict: "E"
+      template: """
+      <div class="sk-overlay" ng-show="visible">
+        <header>
+          <div ng-click="hide()" class="close sk-right icon-cross"></div>
+          <h2>{{title}}</h2>
+        </header>
+        <div class="content" ng-transclude>
+        </div>
+      </div>
+      """
+      transclude: true
+      scope:
+        title: "@"
+        id: "@"
+      link: (scope) ->
+        scope.visible = false
+        scope.hide = ->
+          scope.visible = false
+        overlay.on("show", (id, title) ->
+          scope.visible = id is scope.id
+          if title?
+            scope.title = title
+        )
 
   ]

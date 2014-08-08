@@ -9,7 +9,7 @@ module.exports = [
     restrict: "E"
     replace: true
     template: """
-    <div ng-click="select()"
+    <div ng-dblclick="select()"
       class="gb-repository sk-box"
       ng-class="{selected: isCurrent()}">
       <span class="sk-right">

@@ -27,5 +27,14 @@ block app
         ng-include="'templates/settings.html'"
       )
 
-  //- Errors popup
+  sk-overlay(id="file-diff" title="")
+    | Here comes the file diff...
+
+  sk-overlay(id="create-repository" title="Create a repository")
+    | TODO
+
+  sk-overlay(id="clone-repository" title="Clone a repository")
+    | TODO
+
+  //- Will be used for all alert messages
   sk-alert()

@@ -1,19 +1,18 @@
 
 class BranchesCtrl
 
-  @$inject = ["$scope", "GitService"]
+  @$inject = ["$scope", "GitService", "AlertService"]
 
-  constructor: (@scope, @git) ->
+  constructor: (@scope, @git, @alert) ->
     @scope.data = {}
     @git.ctx.on("refresh", =>
-      
       @scope.data =
         list: @git.getBranches()
     )
 
-  create: ->
-    window.alert("create #{@scope.branch.name}")
-
-    # @scope.branchList.push(@scope.branch.name)
+  create: (name) ->
+    @git.ctx.exec("branch", name).on("success", =>
+      @alert.success("Branch '#{name}' successfuly created!")
+    )
 
 module.exports = BranchesCtrl

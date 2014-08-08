@@ -10,11 +10,15 @@ module.exports = [
     template: """
     <div class="sk-box"
       ng-class="{selected: isCurrent()}"
-      ng-click="select()">
+      ng-dblclick="select()">
       <span class="name">{{name}}</span>
       <span class="sk-right">
-        <span ng-click="push()" class="sk-icon icon-cloud-upload"></span>
-        <span ng-click="rebase()" class="sk-icon icon-cloud-download"></span>
+        <span ng-show="isCurrent()">
+          <span class="sk-small">{{toPull}}</span>
+          <span ng-click="rebase()" class="sk-icon icon-cloud-download"></span>
+          <span class="sk-small">{{toPush}}</span>
+          <span ng-click="push()" class="sk-icon icon-cloud-upload"></span>
+        </span>
         <span ng-click="remove()" class="sk-icon icon-circle-cross"></span>
       </span>
     </div>
@@ -22,6 +26,12 @@ module.exports = [
     scope:
       name: "@"
     link: (scope) ->
+      scope.toPull = 0
+      scope.toPush = 0
+      git.ctx.on("refresh", ->
+        scope.toPull = git.ctx.scope.commits.remote.length
+        scope.toPush = git.ctx.scope.commits.local.length
+      )
       scope.select = ->
         git.ctx.exec("checkout", scope.name)
       scope.isCurrent = ->

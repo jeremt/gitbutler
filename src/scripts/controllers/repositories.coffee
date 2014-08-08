@@ -9,9 +9,10 @@ class RepositoriesCtrl
     "GitService"
     "SettingsService"
     "AlertService"
+    "OverlayService"
   ]
 
-  constructor: (@scope, @toolbox, @git, @settings, @alert) ->
+  constructor: (@scope, @toolbox, @git, @settings, @alert, @overlay) ->
     @scope.data = @settings.cfg.repositories.serialize()
     @settings.on("refresh", =>
       @scope.data = @settings.cfg.repositories.serialize()
@@ -26,10 +27,10 @@ class RepositoriesCtrl
     @toolbox.openFile(((f) => @_add(f)), folder: true)
 
   clone: ->
-    window.alert('Work in progress...')
+    @overlay.emit("show", "clone-repository")
 
   create: ->
-    window.alert('Work in progress...')
+    @overlay.emit("show", "create-repository")
 
   _hasRepository: (alias) ->
     @settings.cfg.repositories.list.find((r) -> r.alias is alias) is false

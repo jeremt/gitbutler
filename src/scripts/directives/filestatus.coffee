@@ -1,7 +1,7 @@
 
 path = require "path"
 
-module.exports = (git, toolbox) ->
+module.exports = (git, toolbox, overlay) ->
     restrict: "E"
     replace: true
     scope:
@@ -25,11 +25,16 @@ module.exports = (git, toolbox) ->
       scope.edit = ->
         toolbox.editFile(path.join(git.ctx.scope.folder, scope.file))
       scope.diff = ->
-        window.alert("Diff #{scope.file}!")
+        # window.alert("Diff #{scope.file}!")
+        overlay.emit("show", "file-diff", scope.file)
       scope.updateIndex = ->
         if scope.type in ["unstaged", "conflicted"]
           git.ctx.exec('stage', scope.file)
         else
           git.ctx.exec('unstage', scope.file)
 
-module.exports.$inject = ["GitService", "ToolboxService"]
+module.exports.$inject = [
+  "GitService"
+  "ToolboxService"
+  "OverlayService"
+]
