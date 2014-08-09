@@ -13,7 +13,25 @@ Minimalistic but powerful UI for GIT. The idea was to provide a UI that doesnt h
 Install
 -------
 
-On Mac, you can just run `install_osx.sh` script. For other platforms, you can install npm and bower modules, run `gulp buildApp` and copy your app manually.
+### Install dependencies
+
+```sh
+$ ./setup.sh
+```
+
+### Install on mac
+
+```sh
+$ gulp installMac
+```
+
+### Install on other platforms
+
+```sh
+$ gulp buildApp
+```
+
+Then, copy manually the application for your platform generated in `build` folder.
 
 Notes
 -----
