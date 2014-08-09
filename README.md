@@ -54,5 +54,6 @@ To test
 Bugs
 ----
 
-- Error when trying to log on branch with no remote (display only local commits when no upstream)
+- deleting branch when no remote branch
+- log commits when no remote branch
 - Buttons on Create and Clone overlays doesnt work...

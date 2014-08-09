@@ -37,16 +37,20 @@ module.exports = [
       scope.isCurrent = ->
         scope.name is git.ctx.scope.branches.current
       scope.push = ->
-        alert.info("Pushing data to remote branch '#{scope.name}'...")
+        alert.info("pushing data to remote branch '#{scope.name}'...")
         git.ctx.exec("push").on("success", (output) ->
           alert.success(output)
         )
       scope.rebase = ->
-        alert.info("Rebasing data from remote branch '#{scope.name}'...")
+        alert.info("rebasing data from remote branch '#{scope.name}'...")
         git.ctx.exec("rebase").on("success", (output) ->
           alert.success(output)
         )
       scope.remove = ->
         if window.confirm("Are you sure?")
-          window.alert("branch -D #{scope.name}")
+          alert.info("removing branch '#{scope.name}'...")
+          git.ctx.exec("removeBranch", scope.name).on("success", =>
+            alert.success("branch '#{scope.name}' successfuly removed!")
+          )
+
 ]
