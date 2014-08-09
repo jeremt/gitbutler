@@ -36,16 +36,14 @@ NW_PACKAGE =
     "height": 800
     "position": "center"
     "as_desktop": true
+  "dependencies":
+    "supershell": "0.1.5"
 
 gulp.task "buildPackage", ->
   misc.writer(filename: "package.json", data: NW_PACKAGE, filter: misc.json())
     .pipe(gulp.dest("./app/"))
 
-# Install the application
-installer = new Installer()
-gulp.task "buildApp", -> installer.buildApp()
-# gulp.task "installMac", -> installer.install('osx')
-
+# General
 vendors = new Vendors()
 gulp.task "buildBower", -> vendors.buildBower()
 gulp.task "buildVendors", -> vendors.buildVendors()
@@ -57,5 +55,10 @@ gulp.task "watch", ["build"], ->
   for task, patterns of compiler.watchList
     for pattern in patterns
       gulp.watch pattern, [task]
+
+# Install
+installer = new Installer(name: "Gitbutler")
+gulp.task "buildApp", ["build"], -> installer.buildApp()
+gulp.task "installMac", ["buildApp"], -> installer.installMac()
 
 gulp.task "default", ["watch"]

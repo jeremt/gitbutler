@@ -1,7 +1,7 @@
 Gitbutler
 =========
 
-Minimalistic but powerful UI for GIT.
+Minimalistic but powerful UI for GIT. The idea was to provide a UI that doesnt have to be in fullscreen, and allows to easily and fastly run git commands using simple shortcuts.
 
 ![1](screenshots/1.png)
 ![2](screenshots/2.png)
@@ -9,6 +9,11 @@ Minimalistic but powerful UI for GIT.
 ![4](screenshots/4.png)
 ![5](screenshots/5.png)
 ![6](screenshots/6.png)
+
+Install
+-------
+
+On Mac, you can just run `install_osx.sh` script. For other platforms, you can install npm and bower modules, run `gulp buildApp` and copy your app manually.
 
 Notes
 -----
