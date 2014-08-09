@@ -1,6 +1,11 @@
 
 @import "sk.styl"
 
+.loading
+  color color_gray
+  font-size 2em
+  padding small_space * 2
+
 .sk-view
   margin auto
   max-width 960px
@@ -21,10 +26,6 @@
     overflow auto
     height 600px // TODO: find how to do something "generic"
     font-size .8em
-    .loading
-      color color_gray
-      font-size 2em
-      padding small_space * 2
     .col
       line-height 2em
       float left
@@ -73,6 +74,17 @@
     border border_size solid color_primary
     &:hover
       border border_size solid darken(color_primary, 10)
+
+.gb-branch
+  font-size .9em
+  &.used
+    border border_size solid darken(color_gray, 50)
+  a
+    padding-right small_space
+    color #888
+    &:hover
+      color #444
+      border-bottom none
 
 #command
   .sk-container

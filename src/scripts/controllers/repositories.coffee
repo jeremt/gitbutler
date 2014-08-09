@@ -44,6 +44,6 @@ class RepositoriesCtrl
           @settings.addRepository(alias: alias, folder: folder)
         )
     else
-      @alert.error "Repository #{alias} already exists..."
+      @alert.error "repository #{alias} already exists..."
 
 module.exports = RepositoriesCtrl
