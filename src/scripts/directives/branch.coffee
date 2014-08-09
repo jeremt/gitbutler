@@ -55,11 +55,15 @@ module.exports = [
         git.ctx.exec("checkout", scope.name)
 
       scope.rebase = (event) ->
-        window.alert("Rebase #{git.used}")
-        event.preventDefault()
+        alert.info("rebasing branch '#{git.used}'...")
+        git.ctx.exec("rebase", git.used).on("success", (output) ->
+          alert.success(output)
+        )
       scope.merge = (event) ->
-        window.alert("Merge #{git.used}")
-        event.preventDefault()
+        alert.info("merging branch '#{git.used}'...")
+        git.ctx.exec("merge", git.used).on("success", (output) ->
+          alert.success(output)
+        )
 
       scope.push = ->
         alert.info("pushing data to remote branch '#{scope.name}'...")
