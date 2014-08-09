@@ -222,3 +222,19 @@ module.exports = (ngModule) ->
           )
 
   ]
+
+  ngModule.directive 'skFocus', [
+
+    "$timeout"
+
+    (timeout) ->
+      link: (scope, element, attrs) ->
+        scope.$watch(attrs.skFocus, ((val) ->
+          if val then timeout(-> element[0].focus())
+        ), true)
+        element.bind('blur', ->
+          if attrs.skFocusLost?
+            scope.$apply(attrs.ngFocusLost)
+        )
+  ]
+

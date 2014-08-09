@@ -7,3 +7,4 @@ module.exports = (ngModule) ->
   ngModule.controller "HistoryCtrl", require("./history")
   ngModule.controller "BranchesCtrl", require("./branches")
   ngModule.controller "SettingsCtrl", require("./settings")
+  ngModule.controller "AppCtrl", require("./app")

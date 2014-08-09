@@ -1,56 +1,72 @@
 extends /partials/layout.jade
 block app
-  sk-views
-    sk-view(name="repositories", icon="icon-server")
-      #repositories(
-        ng-controller="RepositoriesCtrl as repositories"
-        ng-include="'templates/repositories.html'"
-      )
-    sk-view(name="changes", icon="icon-file")
-      #changes(
-        ng-controller="ChangesCtrl as changes"
-        ng-include="'templates/changes.html'"
-      )
-    sk-view(name="history", icon="icon-clock")
-      #history(
-        ng-controller="HistoryCtrl as history"
-        ng-include="'templates/history.html'"
-      )
-    sk-view(name="branches", icon="icon-branch")
-      #branches(
-        ng-controller="BranchesCtrl as branches"
-        ng-include="'templates/branches.html'"
-      )
-    sk-view(name="settings", icon="icon-cog")
-      #settings(
-        ng-controller="SettingsCtrl as settings"
-        ng-include="'templates/settings.html'"
-      )
+  div(ng-controller="AppCtrl as app")
+    #command(ng-show="commandMode")
+      nav
+        input#command-input(
+          type="text"
+          ng-model="command.line"
+          placeholder="Type your command..."
+          sk-focus="commandMode"
+          ng-keypress="$event.which === 13 ? app.runCommand() : null"
+        )
+      .sk-container
+        .sk-box(ng-repeat="cmd in commands | searchCommand:command.line")
+          div
+            span.name {{cmd.name.split(' ')[0]}}
+            span.params  {{cmd.name.split(' ')[1]}}
+          .description.sk-small {{cmd.description}}
+    sk-views(ng-hide="commandMode")
+      sk-view(name="repositories" icon="icon-server")
+        #repositories(
+          ng-controller="RepositoriesCtrl as repositories"
+          ng-include="'templates/repositories.html'"
+        )
+      sk-view(name="changes" icon="icon-file")
+        #changes(
+          ng-controller="ChangesCtrl as changes"
+          ng-include="'templates/changes.html'"
+        )
+      sk-view(name="history" icon="icon-clock")
+        #history(
+          ng-controller="HistoryCtrl as history"
+          ng-include="'templates/history.html'"
+        )
+      sk-view(name="branches" icon="icon-branch")
+        #branches(
+          ng-controller="BranchesCtrl as branches"
+          ng-include="'templates/branches.html'"
+        )
+      sk-view(name="settings" icon="icon-cog")
+        #settings(
+          ng-controller="SettingsCtrl as settings"
+          ng-include="'templates/settings.html'"
+        )
 
-  sk-overlay(id="file-diff")
-    gb-file-diff()
+    sk-overlay(id="file-diff")
+      gb-file-diff()
 
-  sk-overlay(id="create-repository")
-    h3 Destination folder for the repository (should be empty)
-    .sk-textinput
-      input(ng-model="repo.folder" type="text")
-      button
-        .sk-icon.icon-folder
-        | open folder
+    sk-overlay(id="create-repository")
+      h3 Destination folder for the repository (should be empty)
+      .sk-textinput
+        input(ng-model="repo.folder" type="text")
+        button
+          .sk-icon.icon-folder
+          | open folder
 
-  sk-overlay(id="clone-repository" ng-controller="CloneCtrl as clone")
-    h3 Destination folder for the repository (should be empty)
-    .sk-textinput
-      input(ng-model="repo.folder" type="text")
-      button(ng-click="clone.openFolder()")
-        .sk-icon.icon-folder
-        | open folder
-    h3 Remote URL of the repository (https or ssh protocol)
-    .sk-textinput
-      input(ng-model="repo.url" type="text")
-      button(ng-click="clone.run()")
-        .sk-icon.icon-cloud-download
-        | clone
+    sk-overlay(id="clone-repository" ng-controller="CloneCtrl as clone")
+      h3 Destination folder for the repository (should be empty)
+      .sk-textinput
+        input(ng-model="repo.folder" type="text")
+        button(ng-click="clone.openFolder()")
+          .sk-icon.icon-folder
+          | open folder
+      h3 Remote URL of the repository (https or ssh protocol)
+      .sk-textinput
+        input(ng-model="repo.url" type="text")
+        button(ng-click="clone.run()")
+          .sk-icon.icon-cloud-download
+          | clone
 
-  //- Will be used for all alert messages
-  sk-alert()
+    //- Will be used for all alert messages
+    sk-alert()

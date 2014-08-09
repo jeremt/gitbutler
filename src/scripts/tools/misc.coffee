@@ -12,3 +12,11 @@ module.exports =
       for name, method of mixin::
         Mixed::[name] = method
     Mixed
+
+  # Split string and escape with quotes.
+  # @example
+  #   splitQuotes('aa aa aa"aa aa" aa "aaaa aa  "')
+  #   # returns ['aa', 'aa', 'aaaa aa', 'aa', 'aaaa aa  ']
+  #
+  splitQuotes: (str) ->
+    s.replace(/[^\\]?"/g, '') for s in str.match(/(?:[^\s"]+|"[^"]*")+/g)

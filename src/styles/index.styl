@@ -37,6 +37,7 @@
         width 30px
         text-align center
     .code
+      overflow hidden // find a way to do it better...
       margin-left big_space * 2
       .line
         line-height 2em
@@ -72,3 +73,17 @@
     border border_size solid color_primary
     &:hover
       border border_size solid darken(color_primary, 10)
+
+#command
+  .sk-container
+    padding big_space
+    .sk-box
+      .params
+        color #888
+        font-size .9em
+  #command-input
+    padding small_space big_space
+    background transparent
+    border none
+    color white
+    font-size 2em

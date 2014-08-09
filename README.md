@@ -6,11 +6,16 @@ Simple but powerful UI for GIT.
 TODO
 ----
 
-- cmd+0, show command prompt instead of nav and autocomplete any command
 - Merge branches by drag'n drop
 - Ask user reset or patch when push force by someone else
 - Handle when detached from head
-- Replace commit prompt by Skip/Continue/Abort when rebasing
+- Add custom commands
+- Add custom shortcuts
+
+TO TEST
+-------
+
+- Rebase mode
 
 BUGS
 ----
