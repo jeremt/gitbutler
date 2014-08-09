@@ -26,8 +26,7 @@ class SettingsService extends EventEmitter
 
   addRepository: (data) ->
     @cfg.repositories.list.push(data)
-    if @cfg.repositories.list.length is 1
-      @cfg.repositories.current = 0
+    @cfg.repositories.current = @cfg.repositories.list.length - 1
 
   _createCfg: (file) ->
     @cfg = new Observable(JSON.parse(fs.readFileSync(file)))

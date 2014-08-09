@@ -39,5 +39,6 @@ module.exports = [
       scope.remove = ->
         if window.confirm "Are you sure?"
           settings.cfg.repositories.list.splice(scope.getIndex(), 1)
+          settings.cfg.repositories.current = 0
 
 ]
