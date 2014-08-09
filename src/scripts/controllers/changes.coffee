@@ -1,9 +1,9 @@
 
 class ChangesCtrl
 
-  @$inject = ["$scope", "GitService"]
+  @$inject = ["$scope", "GitService", "AlertService"]
 
-  constructor: (@scope, @git) ->
+  constructor: (@scope, @git, @alert) ->
     @scope.rebasing = false
     @scope.commit = message: ""
     @git.ctx.on("refresh", =>
