@@ -1,10 +1,22 @@
 Gitbutler
 =========
 
-Simple but powerful UI for GIT.
+Minimalistic but powerful UI for GIT.
 
-TODO
-----
+![1](screenshots/1.png)
+![2](screenshots/2.png)
+![3](screenshots/3.png)
+![4](screenshots/4.png)
+![5](screenshots/5.png)
+![6](screenshots/6.png)
+
+Notes
+-----
+
+This is a very experimental version, I'm still working on it and it's not finished yet. However, you can try it, give feedback or submit pullrequest to help me improve it;)
+
+To do
+-----
 
 - Merge branches by drag'n drop
 - Ask user reset or patch when push force by someone else
@@ -13,12 +25,13 @@ TODO
 - Add custom shortcuts
 - Topbar menu
 
-TO TEST
+To test
 -------
 
 - Rebase mode
+- Other platform than OSX
 
-BUGS
+Bugs
 ----
 
 - Error when trying to log on branch with no remote (display only local commits when no upstream)
