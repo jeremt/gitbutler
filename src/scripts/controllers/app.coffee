@@ -16,8 +16,8 @@ class AppCtrl
     @_handleEvents()
     @addCommand("stage file", "Stage the given file for the next commit.")
     @addCommand("unstage file", "Unstage the given file of the next commit.")
-    @addCommand("stageAll", "Stage all files for the next commit.")
-    @addCommand("unstageAll", "Unstage all files of the next commit.")
+    @addCommand("stageall", "Stage all files for the next commit.")
+    @addCommand("unstageall", "Unstage all files of the next commit.")
     @addCommand("checkout branch/file/commit", "Reset changes for a file, or set it as the current one for a branch or a commit.")
     @addCommand("commit message", "Commit with the given message.")
     @addCommand("merge branch", "Merge the given branch on the current one.")
@@ -32,6 +32,7 @@ class AppCtrl
       @git.ctx.exec.apply(@git.ctx, cmd).on("success", =>
         @alert.success("Command `#{@scope.command.line}` succeed.")
         @scope.command.line = ""
+        @scope.commandMode = false
       )
     else
       @alert.error("The command should be at least 1 character!")
