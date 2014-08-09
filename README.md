@@ -11,6 +11,7 @@ TODO
 - Handle when detached from head
 - Add custom commands
 - Add custom shortcuts
+- Topbar menu
 
 TO TEST
 -------
