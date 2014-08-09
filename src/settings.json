@@ -1,24 +1,11 @@
 {
   "localRefresh": 1.0,
   "remoteRefresh": 30.0,
-  "mergeMode": "rebase",
+  "pullMode": "rebase",
   "theme": "default",
   "menuStyle": "icon",
   "repositories": {
     "current": 0,
-    "list": [
-      {
-        "alias": "artwork",
-        "folder": "/Users/jeremietaboada/Projects/Stupeflix/artwork"
-      },
-      {
-        "alias": "craftools",
-        "folder": "/Users/jeremietaboada/Projects/Stupeflix/craftools"
-      },
-      {
-        "alias": "director",
-        "folder": "/Users/jeremietaboada/Projects/Stupeflix/director"
-      }
-    ]
+    "list": []
   }
 }

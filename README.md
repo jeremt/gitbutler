@@ -37,13 +37,14 @@ This is a very experimental version, I'm still working on it and it's not finish
 To do
 -----
 
-- Merge branches by drag'n drop
 - Ask user reset or patch when push force by someone else
 - Handle when detached from head
 - Add custom commands
 - Add custom shortcuts
 - Topbar menu
 - Add a virtual folder system for repositories
+- Add git hooks
+- Handle git config
 
 To test
 -------

@@ -1,5 +1,16 @@
 .sk-form
 
+  h2 General
+
+  label Pull mode
+  .sk-select
+    select(
+      ng-model="pullMode"
+      ng-change="settings.update('pullMode', pullMode)"
+      ng-options="p for p in pullModes"
+    )
+    span.icon-arrow-right
+
   h2 Appearence
 
   label Theme

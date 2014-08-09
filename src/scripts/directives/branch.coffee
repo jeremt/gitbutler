@@ -3,8 +3,9 @@ module.exports = [
 
   "GitService"
   "AlertService"
+  "SettingsService"
 
-  (git, alert) ->
+  (git, alert, settings) ->
     restrict: "E"
     replace: true
     template: """
@@ -71,10 +72,11 @@ module.exports = [
           alert.success(output)
         )
       scope.pull = ->
-        alert.info("rebasing data from remote branch '#{scope.name}'...")
-        git.ctx.exec("rebase").on("success", (output) ->
-          alert.success(output)
-        )
+        alert.info("pulling data from remote branch '#{scope.name}'...")
+        git.ctx.exec("pull", settings.cfg.pullMode is 'rebase')
+          .on("success", (output) ->
+            alert.success(output)
+          )
       scope.remove = ->
         if window.confirm("Are you sure?")
           alert.info("removing branch '#{scope.name}'...")
