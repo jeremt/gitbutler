@@ -43,10 +43,10 @@ block app
           ng-include="'templates/settings.html'"
         )
 
-    sk-overlay(id="file-diff")
+    sk-overlay#file-diff
       gb-file-diff()
 
-    sk-overlay(id="create-repository")
+    sk-overlay#create-repository
       h3 Destination folder for the repository (should be empty)
       .sk-textinput
         input(ng-model="repo.folder" type="text")
@@ -54,19 +54,20 @@ block app
           .sk-icon.icon-folder
           | open folder
 
-    sk-overlay(id="clone-repository" ng-controller="CloneCtrl as clone")
-      h3 Destination folder for the repository (should be empty)
-      .sk-textinput
-        input(ng-model="repo.folder" type="text")
-        button(ng-click="clone.openFolder()")
-          .sk-icon.icon-folder
-          | open folder
-      h3 Remote URL of the repository (https or ssh protocol)
-      .sk-textinput
-        input(ng-model="repo.url" type="text")
-        button(ng-click="clone.run()")
-          .sk-icon.icon-cloud-download
-          | clone
+    sk-overlay#clone-repository
+      div(ng-controller="CloneCtrl as truc")
+        h3 Destination folder for the repository (should be empty)
+        .sk-textinput
+          input(ng-model="repo.folder" type="text")
+          button(ng-click="clone.openFolder()")
+            .sk-icon.icon-folder
+            | open folder
+        h3 Remote URL of the repository (https or ssh protocol)
+        .sk-textinput
+          input(ng-model="repo.url" type="text")
+          button(ng-click="clone.run()")
+            .sk-icon.icon-cloud-download
+            | clone
 
     //- Will be used for all alert messages
     sk-alert()

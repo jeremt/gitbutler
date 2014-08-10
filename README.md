@@ -45,6 +45,7 @@ To do
 - Add a virtual folder system for repositories
 - Add git hooks
 - Handle git config
+- History: load more commits on scroll and handle search in commits which aren't loaded yet
 
 To test
 -------

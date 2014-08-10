@@ -11,10 +11,13 @@ class BranchesCtrl
     )
 
   create: (name) ->
-    @alert.info("create branch '#{name}'...")
-    @git.ctx.exec("branch", name).on("success", =>
-      @alert.success("branch '#{name}' successfuly created!")
-      @scope.newBranch.name = ""
-    )
+    if name
+      @alert.info("create branch '#{name}'...")
+      @git.ctx.exec("branch", name).on("success", =>
+        @alert.success("branch '#{name}' successfuly created")
+        @scope.newBranch.name = ""
+      )
+    else
+      @alert.error("cannot create branch without name")
 
 module.exports = BranchesCtrl

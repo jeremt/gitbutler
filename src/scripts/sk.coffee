@@ -170,7 +170,7 @@ module.exports = (ngModule) ->
       restrict: "E"
       template: """
       <div ng-click="hide()" ng-class="{selected: shown}" class="sk-alert {{label}}">
-        {{message}}
+        <pre>{{message}}</pre>
       </div>
       """
       link: (scope) ->
