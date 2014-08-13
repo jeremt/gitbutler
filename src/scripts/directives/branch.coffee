@@ -21,11 +21,11 @@ module.exports = [
             <a ng-click="merge($event)">merge</a>
           </span>
           <span class="sk-small">{{toPull}}</span>
-          <span ng-click="pull()" class="sk-icon icon-cloud-download"></span>
+          <a title="pull" ng-click="pull()" class="sk-icon icon-cloud-download"></a>
           <span class="sk-small">{{toPush}}</span>
-          <span ng-click="push()" class="sk-icon icon-cloud-upload"></span>
+          <a title="push" ng-click="push()" class="sk-icon icon-cloud-upload"></a>
         </span>
-        <span ng-click="remove()" class="sk-icon icon-circle-cross"></span>
+        <a title="remove" ng-click="remove()" class="sk-icon icon-circle-cross"></a>
       </span>
     </div>
     """

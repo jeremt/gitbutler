@@ -41,13 +41,12 @@ To do
 - Handle when detached from head
 - Add custom commands
 - Add custom shortcuts
-- Topbar menu
-- Add a virtual folder system for repositories
+- Native topbar menu
+- Add a virtual folder system for repositories (and reorder by drag-n-drop)
 - Add git hooks
 - Handle git config
 - History: load more commits on scroll and handle search in commits which aren't loaded yet
 - Add untracked in changes view
-- Add tooltip (title on <a>)
 - Add cross on alert popup
 
 To test

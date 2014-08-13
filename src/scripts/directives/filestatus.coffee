@@ -12,9 +12,9 @@ module.exports = (git, toolbox, overlay) ->
   <div ng-dblclick="updateIndex()" class="gb-file-status sk-box">
     <span class="sk-right sk-small">
       <span class="status">{{label}}</span>
-      <span class="sk-icon icon-folder" ng-click="open()"></span>
-      <span class="sk-icon icon-paper" ng-click="edit()"></span>
-      <span class="sk-icon icon-paper-stack" ng-click="diff()"></span>
+      <a title="open" class="sk-icon icon-folder" ng-click="open()"></a>
+      <a title="edit" class="sk-icon icon-paper" ng-click="edit()"></a>
+      <a title="show diff" class="sk-icon icon-paper-stack" ng-click="diff()"></a>
     </span>
     <span class="name">{{file}}</span>
   </div>

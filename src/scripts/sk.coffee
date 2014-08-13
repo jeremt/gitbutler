@@ -11,12 +11,13 @@ module.exports = (ngModule) ->
     template: """
     <nav>
 
-      <span ng-show="mode === 'icon'"
+      <a ng-show="mode === 'icon'"
         ng-repeat="view in views"
+        title="{{view.name}}"
         ng-click="select(view)"
         class="sk-icon {{view.icon}}"
         ng-class="{selected: view.selected}">
-      </span>
+      </a>
 
       <button ng-show="mode === 'text'"
         ng-repeat="view in views"
