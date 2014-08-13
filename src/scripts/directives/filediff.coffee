@@ -2,8 +2,9 @@
 module.exports = [
 
   "GitService"
+  "AlertService"
 
-  (git) ->
+  (git, alert) ->
     require: "^skOverlay"
     restrict: "E"
     template: """
@@ -27,12 +28,10 @@ module.exports = [
         <div class="loading" ng-hide="data">Loading...</div>
       </div>
 
-      <div ng-show="stageMode" class="sk-center sk-button-group">
-        <button ng-click="stage()">Stage file</button>
-      </div>
-
-      <div ng-hide="stageMode" class="sk-center sk-button-group">
-        <button ng-click="unstage()">Unstage file</button>
+      <div class="sk-center sk-button-group">
+        <button ng-show="stageMode" ng-click="stage()">Stage file</button>
+        <button ng-hide="stageMode" ng-click="unstage()">Unstage file</button>
+        <button ng-click="checkout()">Checkout file</button>
       </div>
 
     </div> <!-- .gb-file-diff -->
@@ -48,6 +47,9 @@ module.exports = [
         overlay.scope.hide()
       scope.unstage = ->
         git.ctx.exec("unstage", scope.file)
+        overlay.scope.hide()
+      scope.checkout = ->
+        git.ctx.exec("checkout", scope.file)
         overlay.scope.hide()
 
 ]

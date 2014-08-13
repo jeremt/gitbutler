@@ -46,6 +46,10 @@ To do
 - Add git hooks
 - Handle git config
 - History: load more commits on scroll and handle search in commits which aren't loaded yet
+- Add untracked in changes view
+- Add tooltip (title on <a>)
+- Add cross on alert popup
+- Use ... when filename is too long
 
 To test
 -------
