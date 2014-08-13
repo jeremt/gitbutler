@@ -49,7 +49,6 @@ To do
 - Add untracked in changes view
 - Add tooltip (title on <a>)
 - Add cross on alert popup
-- Use ... when filename is too long
 
 To test
 -------
