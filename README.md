@@ -61,3 +61,4 @@ Bugs
 - deleting branch when no remote branch
 - log commits when no remote branch
 - Buttons on Create and Clone overlays doesnt work...
+- When your remove a repository, the new selected one is not really selected
