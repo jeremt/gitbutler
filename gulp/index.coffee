@@ -37,7 +37,7 @@ NW_PACKAGE =
     "position": "center"
     "as_desktop": true
   "dependencies":
-    "supershell": "0.1.5"
+    "supershell": "0.1.6"
 
 gulp.task "buildPackage", ->
   misc.writer(filename: "package.json", data: NW_PACKAGE, filter: misc.json())
